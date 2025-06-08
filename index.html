@@ -3,31 +3,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucy Heaven</title>
+  <title>LUCY HEAVEN</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: black;
-      color: white;
+      margin: 0;
+      padding: 0;
       font-family: 'JetBrains Mono', monospace;
+      color: white;
+      min-height: 100vh;
+      background: black url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+      font-size: 20px;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
       height: 100vh;
-      margin: 0;
+      object-fit: cover;
+      z-index: 0;
     }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: black;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #ff00ff;
+      font-family: 'JetBrains Mono', monospace;
+      animation: fadeOut 0.8s 1.2s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    .content {
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
     h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      color: #ff00ff;
       margin-bottom: 0.5rem;
+      text-shadow: 0 0 5px #ff00ff;
+      letter-spacing: 2px;
     }
+
     p {
+      font-size: 1.5rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+
+    .cursor {
+      display: inline-block;
+      background: #ff00ff;
+      width: 8px;
+      height: 1em;
+      margin-left: 4px;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section a {
+      display: block;
       font-size: 1.2rem;
-      opacity: 0.7;
+      color: white;
+      text-decoration: none;
+      margin: 3px 0;
+      padding-left: 1rem;
+      border-left: 2px solid transparent;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .section a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 3px #ff00ff;
+      border-left: 2px solid #ff00ff;
+    }
+
+    .ascii {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .content {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Lucy Heaven</h1>
-  <p>music, visuals, vision</p>
+  <div class="loader">loading lucy heaven<span class="cursor"></span></div>
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
+  <div class="content">
+    <h1>Lucy Heaven</h1>
+    <p style="margin-top: 0.75rem;">///music_visuals_vision</p>
+
+    <div class="section">
+      <div class="ascii">> [ MUSIC VIDEOS ]</div>
+      <a href="https://youtu.be/pkf88Bpdrxg?si=PeBjQyeynvCQQ0UD" target="_blank">Ugly Thoughts</a>
+      <a href="https://youtu.be/axXBLRC3R0I?si=GIoorp2LfNGbkgI5" target="_blank">I Love Your Tears</a>
+    </div>
+
+    <div class="section">
+      <div class="ascii">> [ MUSIC LINKS ]</div>
+      <a href="https://open.spotify.com/artist/40JpOOsJ5l6ghMsAX6jeEQ" target="_blank">Spotify</a>
+      <a href="https://music.apple.com/us/artist/lucy-heaven/1721824679" target="_blank">Apple Music</a>
+      <a href="https://music.youtube.com/channel/UCXB7fuOC2P3j8McYqX63r4Q" target="_blank">YouTube Music</a>
+      <a href="https://soundcloud.com/lucy-heaven-590501590" target="_blank">SoundCloud</a>
+    </div>
+
+    <div class="section">
+      <div class="ascii">> [ SOCIAL ]</div>
+      <a href="https://x.com/lucyheaven18" target="_blank">X / Twitter</a>
+      <a href="https://www.instagram.com/lucyheaven18/" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@lucyheaven18" target="_blank">TikTok</a>
+    </div>
+  </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
