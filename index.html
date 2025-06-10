@@ -79,6 +79,18 @@
       font-family: 'JetBrains Mono', monospace;
       animation: fadeOut 0.8s 1.2s forwards;
     }
+    .loader .cursor {
+      display: inline-block;
+      background: #ff00ff;
+      width: 8px;
+      height: 1em;
+      margin-left: 4px;
+      animation: blink 1s step-start infinite;
+      box-shadow: 0 0 4px #ff00ff;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
     @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
     .content {
       z-index: 3;
@@ -94,7 +106,11 @@
       margin-bottom: 0.5rem;
       letter-spacing: 2px;
     }
-    p { font-size: clamp(1.2rem, 3vw, 1.5rem); color: #ccc; margin-bottom: 2rem; }
+    p {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
     .typed-text {
       color: #ccc;
       font-size: clamp(1.2rem, 3vw, 1.5rem);
@@ -103,24 +119,12 @@
       display: inline-block;
       min-width: 10ch;
     }
-    .typing-wrapper {
-      display: inline-flex;
+    .section {
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
     }
-    .typing-wrapper .cursor {
-      display: none;
-    }
-    .cursor {
-      display: inline-block;
-      background: #ff00ff;
-      width: 8px;
-      height: 1em;
-      margin-left: 4px;
-      animation: blink 1s step-start infinite;
-      box-shadow: 0 0 4px #ff00ff;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-    .section { margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; }
     .section a {
       display: inline-flex;
       align-items: center;
@@ -133,11 +137,41 @@
       border-left: 2px solid transparent;
       transition: all 0.2s ease-in-out;
     }
-    .section a i { margin-right: 8px; color: #ff00ff; transition: transform 0.2s; }
-    .section a:hover { color: #ff00ff; text-shadow: 0 0 3px #ff00ff; border-left: 2px solid #ff00ff; }
-    .section a:hover i { transform: scale(1.2); }
-    .ascii { color: #666; font-size: 1rem; margin-bottom: 0.25rem; text-align: center; }
-    @media screen and (max-width: 768px) { .content { padding: 1rem; } }
+    .section a i {
+      margin-right: 8px;
+      color: #ff00ff;
+      transition: transform 0.2s;
+    }
+    .section a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 3px #ff00ff;
+      border-left: 2px solid #ff00ff;
+    }
+    .section a:hover i {
+      transform: scale(1.2);
+    }
+    .ascii {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      text-align: center;
+    }
+    #copyFeedback {
+      margin-left: 10px;
+      color: #00ff88;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      font-weight: bold;
+    }
+    #copyFeedback.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media screen and (max-width: 768px) {
+      .content { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -147,10 +181,7 @@
   </video>
   <div class="content">
     <h1>LUCY HEAVEN</h1>
-    <div class="typing-wrapper">
-      <p class="typed-text" id="type-target"></p>
-      <span class="cursor"></span>
-    </div>
+    <p class="typed-text" id="type-target"></p>
 
     <div class="section">
       <div class="ascii">> [ MUSIC VIDEOS ]</div>
@@ -175,52 +206,47 @@
     </div>
 
     <div class="section">
-  <div class="ascii">> [ BUSINESS & ART ]</div>
-  <a href="#" onclick="copyEmail()" id="emailLink"><i class="fas fa-envelope"></i> lucyheaven18@gmail.com</a>
-  <span id="copyFeedback" style="margin-left: 10px; color: #00ff88; display: none;">copied</span>
-</div>
+      <div class="ascii">> [ BUSINESS & ART ]</div>
+      <a href="#" onclick="copyEmail()" id="emailLink"><i class="fas fa-envelope"></i> lucyheaven18@gmail.com</a>
+      <span id="copyFeedback">copied</span>
+    </div>
   </div>
 
   <script>
-  function copyEmail() {
-    const email = "lucyheaven18@gmail.com";
-    navigator.clipboard.writeText(email).then(() => {
+    function copyEmail() {
+      const email = "lucyheaven18@gmail.com";
       const feedback = document.getElementById("copyFeedback");
-      feedback.style.display = "inline";
-      setTimeout(() => {
-        feedback.style.display = "none";
-      }, 2000);
+      navigator.clipboard.writeText(email).then(() => {
+        feedback.classList.add("visible");
+        setTimeout(() => {
+          feedback.classList.remove("visible");
+        }, 2000);
+      });
+    }
+
+    const textList = ["music_", "visuals_", "vision_"];
+    const target = document.getElementById("type-target");
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function typeEffect() {
+      const currentText = textList[textIndex];
+      if (charIndex <= currentText.length) {
+        target.textContent = "/" + currentText.substring(0, charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 120);
+      } else {
+        setTimeout(() => {
+          textIndex = (textIndex + 1) % textList.length;
+          charIndex = 0;
+          typeEffect();
+        }, 1500);
+      }
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(typeEffect, 1500);
     });
-  }
-</script>
-
-  <script>
-    const textList = ["//music_", "//visuals_", "//vision_"];
-const target = document.getElementById("type-target");
-let textIndex = 0;
-let charIndex = 0;
-
-// Preload visible slash to avoid blank space
-target.textContent = "/";
-
-function typeEffect() {
-  const currentText = textList[textIndex];
-  if (charIndex <= currentText.length) {
-    target.textContent = "/" + currentText.substring(0, charIndex);
-    charIndex++;
-    setTimeout(typeEffect, 120);
-  } else {
-    setTimeout(() => {
-      textIndex = (textIndex + 1) % textList.length;
-      charIndex = 0;
-      typeEffect();
-    }, 1500);
-  }
-}
-
-window.addEventListener("load", () => {
-  setTimeout(typeEffect, 1500);
-});
   </script>
 </body>
 </html>
