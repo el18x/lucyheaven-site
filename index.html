@@ -176,9 +176,23 @@
 
     <div class="section">
   <div class="ascii">> [ BUSINESS & ART ]</div>
-  <a href="mailto:lucyheaven18@gmail.com"><i class="fas fa-envelope"></i> email </a>
+  <a href="#" onclick="copyEmail()" id="emailLink"><i class="fas fa-envelope"></i> lucyheaven18@gmail.com</a>
+  <span id="copyFeedback" style="margin-left: 10px; color: #00ff88; display: none;">copied</span>
 </div>
   </div>
+
+  <script>
+  function copyEmail() {
+    const email = "lucyheaven18@gmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      const feedback = document.getElementById("copyFeedback");
+      feedback.style.display = "inline";
+      setTimeout(() => {
+        feedback.style.display = "none";
+      }, 2000);
+    });
+  }
+</script>
 
   <script>
     const textList = ["//music_", "//visuals_", "//vision_"];
