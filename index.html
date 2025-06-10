@@ -53,14 +53,28 @@
       width: 100vw;
       height: 100vh;
       background: repeating-linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.03),
-        rgba(255, 255, 255, 0.03) 2px,
-        transparent 2px,
-        transparent 4px
+        to bottom,
+        rgba(255, 255, 255, 0.02),
+        rgba(255, 255, 255, 0.02) 1px,
+        transparent 1px,
+        transparent 3px
       );
-      pointer-events: none;
       z-index: 1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(ellipse at center, rgba(255,0,255,0.1) 0%, transparent 70%);
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: screen;
     }
 
     .loader {
@@ -88,7 +102,7 @@
     }
 
     .content {
-      z-index: 2;
+      z-index: 3;
       text-align: center;
       padding: 2rem;
       display: flex;
@@ -198,7 +212,7 @@
     </div>
 
     <div class="section">
-      <div class="ascii">> [ SOCIAL ]</div>
+      <div class="ascii">> [ SOCIALS ]</div>
       <a href="https://www.instagram.com/lucyheaven18/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://x.com/lucyheaven18" target="_blank"><i class="fab fa-x-twitter"></i> Twitter</a>
       <a href="https://t.me/lucyheaven" target="_blank"><i class="fab fa-telegram"></i> Telegram (Русский)</a>
@@ -207,6 +221,7 @@
   </div>
 </body>
 </html>
+
 
 
 
