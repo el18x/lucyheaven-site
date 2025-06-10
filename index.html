@@ -154,8 +154,8 @@
 
     <div class="section">
       <div class="ascii">> [ MUSIC VIDEOS ]</div>
-      <a href="https://youtu.be/pkf88Bpdrxg?si=PeBjQyeynvCQQ0UD" target="_blank"><i class="fas fa-video"></i> Ugly Thoughts</a>
-      <a href="https://youtu.be/axXBLRC3R0I?si=GIoorp2LfNGbkgI5" target="_blank"><i class="fas fa-video"></i> I Love Your Tears</a>
+      <a href="https://youtu.be/pkf88Bpdrxg?si=PeBjQyeynvCQQ0UD" target="_blank"><i class="fab fa-youtube"></i> Ugly Thoughts</a>
+      <a href="https://youtu.be/axXBLRC3R0I?si=GIoorp2LfNGbkgI5" target="_blank"><i class="fab fa-youtube"></i> I Love Your Tears</a>
     </div>
 
     <div class="section">
@@ -173,32 +173,40 @@
       <a href="https://t.me/lucyheaven" target="_blank"><i class="fab fa-telegram"></i> Telegram (Русский)</a>
       <a href="https://www.tiktok.com/@lucyheaven18" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
     </div>
+
+    <div class="section">
+  <div class="ascii">> [ BUSINESS & ART ]</div>
+  <a href="mailto:lucyheaven18@gmail.com"><i class="fas fa-envelope"></i> email </a>
+</div>
   </div>
 
   <script>
-    const textList = ["///music_", "///visuals_", "///vision_"];
-    const target = document.getElementById("type-target");
-    let textIndex = 0;
-    let charIndex = 0;
+    const textList = ["//music_", "//visuals_", "//vision_"];
+const target = document.getElementById("type-target");
+let textIndex = 0;
+let charIndex = 0;
 
-    function typeEffect() {
-      const currentText = textList[textIndex];
-      if (charIndex <= currentText.length) {
-        target.textContent = currentText.substring(0, charIndex);
-        charIndex++;
-        setTimeout(typeEffect, 120);
-      } else {
-        setTimeout(() => {
-          textIndex = (textIndex + 1) % textList.length;
-          charIndex = 0;
-          typeEffect();
-        }, 1500);
-      }
-    }
+// Preload visible slash to avoid blank space
+target.textContent = "/";
 
-    window.addEventListener("load", () => {
-      setTimeout(typeEffect, 1500);
-    });
+function typeEffect() {
+  const currentText = textList[textIndex];
+  if (charIndex <= currentText.length) {
+    target.textContent = "/" + currentText.substring(0, charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 120);
+  } else {
+    setTimeout(() => {
+      textIndex = (textIndex + 1) % textList.length;
+      charIndex = 0;
+      typeEffect();
+    }, 1500);
+  }
+}
+
+window.addEventListener("load", () => {
+  setTimeout(typeEffect, 1500);
+});
   </script>
 </body>
 </html>
