@@ -101,7 +101,7 @@
       align-items: center;
     }
     h1 {
-      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-size: clamp(5rem, 6vw, 3.5rem);
       color: #ff00ff;
       margin-bottom: 0.5rem;
       letter-spacing: 2px;
@@ -133,8 +133,9 @@
       color: white;
       text-decoration: none;
       margin: 6px auto;
-      padding-left: 1rem;
-      border-left: 2px solid transparent;
+      padding-left: 0rem;
+      border-left: none;
+      position: relative;
       transition: all 0.2s ease-in-out;
     }
     .section a i {
@@ -145,16 +146,19 @@
     .section a:hover {
       color: #ff00ff;
       text-shadow: 0 0 3px #ff00ff;
-      border-left: 2px solid #ff00ff;
+      border-left: 0px solid #ff00ff; /* the mark on the left */
     }
     .section a:hover i {
       transform: scale(1.2);
     }
     .ascii {
-      color: #666;
-      font-size: 1rem;
+      color: #ff00ff;
+      font-size: 1.25rem;
       margin-bottom: 0.25rem;
       text-align: center;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
     #copyFeedback {
       margin-left: 10px;
@@ -179,18 +183,18 @@
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="background.mp4" type="video/mp4">
   </video>
+   
   <div class="content">
     <h1>LUCY HEAVEN</h1>
     <p class="typed-text" id="type-target"></p>
-
+    
     <div class="section">
-      <div class="ascii">> [ MUSIC VIDEOS ]</div>
-      <a href="https://youtu.be/pkf88Bpdrxg?si=PeBjQyeynvCQQ0UD" target="_blank"><i class="fab fa-youtube"></i> Ugly Thoughts</a>
-      <a href="https://youtu.be/axXBLRC3R0I?si=GIoorp2LfNGbkgI5" target="_blank"><i class="fab fa-youtube"></i> I Love Your Tears</a>
+      <div class="ascii">[NEW]</div>
+      <a href="https://distrokid.com/hyperfollow/lucyheaven/emo-girl-2" target="_blank"><i class="fab fa-spotify"></i> PRESAVE EMO GIRL</a>
     </div>
 
     <div class="section">
-      <div class="ascii">> [ MUSIC LINKS ]</div>
+      <div class="ascii">[MUSIC]</div>
       <a href="https://open.spotify.com/artist/40JpOOsJ5l6ghMsAX6jeEQ" target="_blank"><i class="fab fa-spotify"></i> Spotify</a>
       <a href="https://music.apple.com/us/artist/lucy-heaven/1721824679" target="_blank"><i class="fab fa-apple"></i> Apple Music</a>
       <a href="https://music.youtube.com/channel/UCXB7fuOC2P3j8McYqX63r4Q" target="_blank"><i class="fab fa-youtube"></i> YouTube Music</a>
@@ -198,15 +202,21 @@
     </div>
 
     <div class="section">
-      <div class="ascii">> [ SOCIALS ]</div>
+      <div class="ascii">[SOCIALS]</div>
       <a href="https://www.instagram.com/lucyheaven18/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://x.com/lucyheaven18" target="_blank"><i class="fab fa-x-twitter"></i> Twitter</a>
-      <a href="https://t.me/lucyheaven" target="_blank"><i class="fab fa-telegram"></i> Telegram (Русский)</a>
       <a href="https://www.tiktok.com/@lucyheaven18" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+      <a href="https://t.me/lucyheaven" target="_blank"><i class="fab fa-telegram"></i> Telegram (Russian)</a>
     </div>
 
     <div class="section">
-      <div class="ascii">> [ BUSINESS & ART ]</div>
+      <div class="ascii">[MUSIC VIDEOS]</div>
+      <a href="https://youtu.be/pkf88Bpdrxg?si=PeBjQyeynvCQQ0UD" target="_blank"><i class="fab fa-youtube"></i> Ugly Thoughts</a>
+      <a href="https://youtu.be/axXBLRC3R0I?si=GIoorp2LfNGbkgI5" target="_blank"><i class="fab fa-youtube"></i> I Love Your Tears</a>
+    </div>
+
+    <div class="section">
+      <div class="ascii">[CONTACT]</div>
       <a href="#" onclick="copyEmail()" id="emailLink"><i class="fas fa-envelope"></i> lucyheaven18@gmail.com</a>
       <span id="copyFeedback">copied</span>
     </div>
@@ -250,3 +260,4 @@
   </script>
 </body>
 </html>
+
